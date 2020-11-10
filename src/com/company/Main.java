@@ -28,9 +28,19 @@ public class Main {
             @Override
             public void run() {
                 System.out.println(ANSI_RED+"hello from MyRunnable's implementation of run()");
+                try{
+                    //Here myRunnableThread will wait for the anotheThread to finish running in order to resume running again
+                    anotherThread.join();
+                    System.out.println(ANSI_RED+"AnotherThread terminated so I'm running again");
+                }
+                catch(InterruptedException e){
+                    System.out.println(ANSI_RED +"I couldn't wait after all. I was interrupted");
+                }
             }
         });
         myRunnableThread.start();
+        //anotherThread will be interrupted using the catch block
+//        anotherThread.interrupt();
         System.out.println(ANSI_PURPLE+"Hello from the main thread");
         //cant start it for the second time it will create an error
 //        anotherThread.start();

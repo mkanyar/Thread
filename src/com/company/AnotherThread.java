@@ -13,6 +13,7 @@ public class AnotherThread extends Thread {
     }
     catch(InterruptedException e){
         System.out.println(ANSI_BLUE+"Another thread woke me up");
+        return;
     }
         System.out.println(" Three seconds have passed and I am awake");
     }
