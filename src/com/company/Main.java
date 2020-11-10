@@ -30,8 +30,9 @@ public class Main {
                 System.out.println(ANSI_RED+"hello from MyRunnable's implementation of run()");
                 try{
                     //Here myRunnableThread will wait for the anotheThread to finish running in order to resume running again
-                    anotherThread.join();
-                    System.out.println(ANSI_RED+"AnotherThread terminated so I'm running again");
+                    //Here by adding a timer we are telling the current thread to resume running after 2secs
+                    anotherThread.join(2000);
+                    System.out.println(ANSI_RED+"AnotherThread terminated, or timed out so I'm running again");
                 }
                 catch(InterruptedException e){
                     System.out.println(ANSI_RED +"I couldn't wait after all. I was interrupted");
